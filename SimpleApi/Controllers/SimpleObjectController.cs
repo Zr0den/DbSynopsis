@@ -30,5 +30,20 @@ namespace SimpleApi.Controllers
             var simpleObjects = await _getObjectService.GetAllAsync();
             return Ok(simpleObjects);
         }
+
+        [HttpGet("getSafe")]
+        public async Task<IActionResult> GetByIdSafe(string id)
+        {
+            var simpleObjects = await _getObjectService.GetByIdAsync(id);
+            return Ok(simpleObjects);
+        }
+
+        [HttpGet("getUnsafe")]
+        public async Task<IActionResult> GetByIdUnsafe(string id)
+        {
+            var simpleObjects = await _getObjectService.GetByIdAsync(id);
+            return Ok(simpleObjects);
+        }
+
     }
 }
