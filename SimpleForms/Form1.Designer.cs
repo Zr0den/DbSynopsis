@@ -41,6 +41,12 @@
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.txtIdUnsafe1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtParameter = new System.Windows.Forms.TextBox();
+            this.txtUnparameter = new System.Windows.Forms.TextBox();
+            this.btnParam = new System.Windows.Forms.Button();
+            this.btnUnparam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +71,7 @@
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 3;
-            this.btnCreate.Text = "Press";
+            this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -159,11 +165,69 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Id:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Parameterized (EF):";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 233);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Unparameterized:";
+            // 
+            // txtParameter
+            // 
+            this.txtParameter.Location = new System.Drawing.Point(103, 198);
+            this.txtParameter.Name = "txtParameter";
+            this.txtParameter.Size = new System.Drawing.Size(47, 20);
+            this.txtParameter.TabIndex = 16;
+            // 
+            // txtUnparameter
+            // 
+            this.txtUnparameter.Location = new System.Drawing.Point(103, 230);
+            this.txtUnparameter.Name = "txtUnparameter";
+            this.txtUnparameter.Size = new System.Drawing.Size(47, 20);
+            this.txtUnparameter.TabIndex = 17;
+            // 
+            // btnParam
+            // 
+            this.btnParam.Location = new System.Drawing.Point(156, 196);
+            this.btnParam.Name = "btnParam";
+            this.btnParam.Size = new System.Drawing.Size(75, 23);
+            this.btnParam.TabIndex = 18;
+            this.btnParam.Text = "Press";
+            this.btnParam.UseVisualStyleBackColor = true;
+            this.btnParam.Click += new System.EventHandler(this.btnParam_Click);
+            // 
+            // btnUnparam
+            // 
+            this.btnUnparam.Location = new System.Drawing.Point(156, 228);
+            this.btnUnparam.Name = "btnUnparam";
+            this.btnUnparam.Size = new System.Drawing.Size(75, 23);
+            this.btnUnparam.TabIndex = 19;
+            this.btnUnparam.Text = "Press";
+            this.btnUnparam.UseVisualStyleBackColor = true;
+            this.btnUnparam.Click += new System.EventHandler(this.btnUnparam_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUnparam);
+            this.Controls.Add(this.btnParam);
+            this.Controls.Add(this.txtUnparameter);
+            this.Controls.Add(this.txtParameter);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtIdUnsafe1);
             this.Controls.Add(this.maskedTextBox1);
@@ -198,6 +262,12 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.TextBox txtIdUnsafe1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtParameter;
+        private System.Windows.Forms.TextBox txtUnparameter;
+        private System.Windows.Forms.Button btnParam;
+        private System.Windows.Forms.Button btnUnparam;
     }
 }
 

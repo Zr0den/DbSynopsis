@@ -146,6 +146,66 @@ namespace SimpleForms
                 txtResponse.Text = $"Exception:\n{ex.Message}";
             }
         }
+
+        private async void btnParam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = txtParameter.Text;
+                HttpResponseMessage response = await _httpClient.GetAsync($"/api/SimpleObject/getSafe?id={id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    var simpleObject = JsonSerializer.Deserialize<ObjectDto>(responseData, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    txtResponse.Text = $"ID: {simpleObject.Id}, Text: {simpleObject.Text}";
+
+                }
+                else
+                {
+                    string error = await response.Content.ReadAsStringAsync();
+                    txtResponse.Text = $"Error:\n{response.StatusCode} - {error}";
+                }
+            }
+            catch (Exception ex)
+            {
+                txtResponse.Text = $"Exception:\n{ex.Message}";
+            }
+        }
+
+        private async void btnUnparam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = txtUnparameter.Text;
+                HttpResponseMessage response = await _httpClient.GetAsync($"/api/SimpleObject/getUnsafe?id={id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    var simpleObject = JsonSerializer.Deserialize<ObjectDto>(responseData, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    txtResponse.Text = $"ID: {simpleObject.Id}, Text: {simpleObject.Text}";
+
+                }
+                else
+                {
+                    string error = await response.Content.ReadAsStringAsync();
+                    txtResponse.Text = $"Error:\n{response.StatusCode} - {error}";
+                }
+            }
+            catch (Exception ex)
+            {
+                txtResponse.Text = $"Exception:\n{ex.Message}";
+            }
+        }
     }
 
     internal class ObjectDto

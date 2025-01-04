@@ -16,12 +16,21 @@ namespace SimpleApi.Services
         {
             return await _dbContext.SimpleObjects.ToListAsync();
         }
-        public async Task<SimpleObject> GetByIdAsync(string id)
+
+        public async Task<SimpleObject> GetByIdSafeAsync(int id)
         {
+            //Using EntityFramework with LINQ ensures a Paramaterized Query, which will not execute unexpected code.
+            return await _dbContext.SimpleObjects.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<SimpleObject> GetByIdUnsafeAsync(string id)
+        {
+            //Using ExecuteSqlRaw with a dynamically constructed query opens up a vulnerability to SQL Injection if input "id" is malicious.
             var query = $"SELECT * FROM SimpleObjects WHERE Id = " + id;
             await _dbContext.Database.ExecuteSqlRawAsync(query);
 
             return await _dbContext.SimpleObjects.Where(x => x.Id == Convert.ToInt32(id)).FirstOrDefaultAsync();
         }
+
     }
 }

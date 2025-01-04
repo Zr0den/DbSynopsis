@@ -34,14 +34,18 @@ namespace SimpleApi.Controllers
         [HttpGet("getSafe")]
         public async Task<IActionResult> GetByIdSafe(string id)
         {
-            var simpleObjects = await _getObjectService.GetByIdAsync(id);
-            return Ok(simpleObjects);
+            if (Int32.TryParse(id, out int verifiedId))
+            {
+                var simpleObjects = await _getObjectService.GetByIdSafeAsync(verifiedId);
+                return Ok(simpleObjects);
+            }
+            return BadRequest();
         }
 
         [HttpGet("getUnsafe")]
         public async Task<IActionResult> GetByIdUnsafe(string id)
         {
-            var simpleObjects = await _getObjectService.GetByIdAsync(id);
+            var simpleObjects = await _getObjectService.GetByIdUnsafeAsync(id);
             return Ok(simpleObjects);
         }
 
