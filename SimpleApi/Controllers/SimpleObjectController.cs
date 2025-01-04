@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SimpleApi.Entities;
-using SimpleApi.Interfaces;
 using SimpleApi.Services;
 
 namespace SimpleApi.Controllers
@@ -9,11 +8,13 @@ namespace SimpleApi.Controllers
     [Route("api/[controller]")]
     public class SimpleObjectController : ControllerBase
     {
-        private readonly ICreateObject _createObjectService;
+        private readonly CreateObject _createObjectService;
+        private readonly GetObject _getObjectService;
 
-        public SimpleObjectController(ICreateObject createObjectService)
+        public SimpleObjectController(CreateObject createObjectService, GetObject getObjectService)
         {
             _createObjectService = createObjectService;
+            _getObjectService = getObjectService;
         }
 
         [HttpPost("create")]
@@ -21,6 +22,13 @@ namespace SimpleApi.Controllers
         {
             var createdObject = await _createObjectService.CreateAsync(simpleObject);
             return Ok(createdObject);
+        }
+
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var simpleObjects = await _getObjectService.GetAllAsync();
+            return Ok(simpleObjects);
         }
     }
 }

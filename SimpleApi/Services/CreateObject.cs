@@ -1,11 +1,10 @@
 ﻿using SimpleApi.DB;
 using SimpleApi.Entities;
-using SimpleApi.Interfaces;
 using System;
 
 namespace SimpleApi.Services
 {
-    public class CreateObject : ICreateObject
+    public class CreateObject
     {
         private readonly SQLDbContext _dbContext;
 
